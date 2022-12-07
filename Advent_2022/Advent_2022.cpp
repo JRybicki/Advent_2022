@@ -10,12 +10,10 @@
 #include <string>
 #include <set>
 
-
 int main()
 {
     //Day1_Main();
     Day2_Main(true);
-
 
     //Wait for an input before close
     std::getchar();

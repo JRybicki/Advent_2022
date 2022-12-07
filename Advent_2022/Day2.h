@@ -7,7 +7,7 @@
 //1 = rock, 2 = paper, 3 = scizzors
 void Day2_Main(bool part1)
 {
-    std::ifstream DataFile("Day2_Input.txt");
+    std::ifstream DataFile("Input_Data//Day2_Input.txt");
     std::string line;
 
     int totalScore = 0;

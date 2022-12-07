@@ -7,7 +7,7 @@
 
 void Day1_Main()
 {
-    std::ifstream DataFile("Day1_Input.txt");
+    std::ifstream DataFile("inputPath//Day1_Input.txt");
     std::string line;
 
     int elf_max = 0;
