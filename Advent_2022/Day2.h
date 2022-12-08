@@ -1,11 +1,12 @@
 #pragma once
+#include "common.h"
 
 #include <fstream>
 #include <iostream>
 #include <string>
 
 //1 = rock, 2 = paper, 3 = scizzors
-void Day2_Main(bool part1)
+int Day2_Main(Star Part_Of_Day)
 {
     std::ifstream DataFile("Input_Data//Day2_Input.txt");
     std::string line;
@@ -21,7 +22,7 @@ void Day2_Main(bool part1)
         char handConvert = hand2 - 23;
         int winPoints = 0;
 
-        if (part1) {
+        if (Part_Of_Day == Part_1) {
             //Rock
             if (hand1 == 'A') {
                 if (hand2 == 'Y') {
@@ -75,4 +76,6 @@ void Day2_Main(bool part1)
     }
 
     DataFile.close();
+
+    return totalScore;
 }

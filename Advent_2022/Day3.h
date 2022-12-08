@@ -1,12 +1,12 @@
 #pragma once
+#include "common.h"
 
 #include <fstream>
-#include <iostream>
 #include <string>
 #include <unordered_set>
 #include <vector>
 
-void Day3_Main(bool part1)
+int Day3_Main(Star Part_Of_Day)
 {
     std::ifstream DataFile("Input_Data//Day3_Input.txt");
     //std::ifstream DataFile("Input_Data//test.txt");
@@ -19,7 +19,7 @@ void Day3_Main(bool part1)
 
     while (getline(DataFile, line)) {
 
-        if (part1) {
+        if (Part_Of_Day == Part_1) {
             //Create a set of the first half
             std::unordered_set<char> part1;
 
@@ -86,5 +86,6 @@ void Day3_Main(bool part1)
         }
     }
 
-    std::cout << totalScore << std::endl;
+    DataFile.close();
+    return totalScore;
 }

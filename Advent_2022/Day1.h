@@ -1,17 +1,18 @@
 #pragma once
+#include "common.h"
 
 #include <fstream>
-#include <iostream>
 #include <string>
 #include <set>
 
-void Day1_Main()
+int Day1_Main(Star Part_Of_Day)
 {
-    std::ifstream DataFile("inputPath//Day1_Input.txt");
+    std::ifstream DataFile("Input_Data//Day1_Input.txt");
     std::string line;
 
     int elf_max = 0;
     int cur_elf_calories = 0;
+    int totalSum = 0;
 
     //This is lazy and we are also assuming no elves will have the same amount of food
     std::set<int> elf_calories;
@@ -48,18 +49,20 @@ void Day1_Main()
     //add the last elf
     elf_calories.insert(cur_elf_calories);
     cur_elf_calories = 0;
-
     auto it = elf_calories.rbegin();
-    std::cout << "most elf calories: " << *it << std::endl;
 
-    const int NUM_TOP_ELF = 3;
-    int sum_top_elf = 0;
-    for (int i = 0; i < NUM_TOP_ELF; i++) {
-        sum_top_elf += *it;
-        ++it;
+    if (Part_Of_Day == Part_1) {
+        totalSum = *it;
+    } else {
+        const int NUM_TOP_ELF = 3;
+        int sum_top_elf = 0;
+        for (int i = 0; i < NUM_TOP_ELF; i++) {
+            sum_top_elf += *it;
+            ++it;
+        }
+        totalSum = sum_top_elf;
     }
-    std::cout << "top elf calories: " << sum_top_elf << std::endl;
-
 
     DataFile.close();
+    return totalSum;
 }
