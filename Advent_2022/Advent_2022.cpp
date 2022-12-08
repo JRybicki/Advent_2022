@@ -24,7 +24,7 @@ int main()
     std::cout << "Day 3 part 2 " << Day3_Main(Part_2) << std::endl;**/
 
     //Day4_Main(Part_2);
-    Day5_Main(Part_1);
+    Day5_Main(Part_2);
 
     //Wait for an input before close
     std::getchar();
