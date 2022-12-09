@@ -4,8 +4,6 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
-#include <vector>
-#include <stack>
 
 int Day6_Main(Star Part_Of_Day)
 {
