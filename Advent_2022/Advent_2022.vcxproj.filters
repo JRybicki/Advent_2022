@@ -30,6 +30,7 @@
     <Text Include="Input_Data\test.txt" />
     <Text Include="Input_Data\Day4_Input.txt" />
     <Text Include="Input_Data\Day5_Input.txt" />
+    <Text Include="Input_Data\Day6_Input.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day1.h">
@@ -48,6 +49,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Day5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Day6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
