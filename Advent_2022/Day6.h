@@ -7,7 +7,7 @@
 #include <vector>
 #include <stack>
 
-void Day6_Main(Star Part_Of_Day)
+int Day6_Main(Star Part_Of_Day)
 {
     std::ifstream DataFile("Input_Data//Day6_Input.txt");
     //std::ifstream DataFile("Input_Data//test.txt");
@@ -20,10 +20,14 @@ void Day6_Main(Star Part_Of_Day)
         int p2 = 0;
 
         std::unordered_map<char, int> mark;
-        
-        while (mark.size() < 4) {
-            char newC = line[p2];
+        int lenMark = 0;
+        if (Part_Of_Day == Part_1) {
+            lenMark = 4;
+        } else {
+            lenMark = 14;
+        }
 
+        while (mark.size() < lenMark) {
             auto it = mark.find(line[p2]);
             if (it != mark.end())
             {
@@ -38,9 +42,9 @@ void Day6_Main(Star Part_Of_Day)
             p2++;
         }
 
-
-
         endKey = p2;
     }
     DataFile.close();
+
+    return endKey;
 }

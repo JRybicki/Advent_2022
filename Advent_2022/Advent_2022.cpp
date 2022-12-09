@@ -26,7 +26,7 @@ int main()
 
     //Day4_Main(Part_2);
     //Day5_Main(Part_2);
-    Day6_Main(Part_1);
+    Day6_Main(Part_2);
 
     //Wait for an input before close
     std::getchar();
