@@ -14,6 +14,7 @@
 #include "Day8.h"
 #include "Day9.h"
 #include "Day10.h"
+#include "Day11.h"
 
 #include <iostream>
 #include <string>
@@ -34,7 +35,8 @@ int main()
     //Day7_Main(Part_2);
     //Day8_Main(Part_2);
     //Day9_Main(Part_2);
-    Day10_Main(Part_2);
+    //Day10_Main(Part_2);
+    Day11_Main(Part_2);
 
     //Wait for an input before close
     std::getchar();
