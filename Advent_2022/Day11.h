@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <queue>
 
 enum ops {
     add,
@@ -13,17 +14,17 @@ enum ops {
 
 
 struct monkey {
-    std::vector<int> items;
+    std::queue<unsigned long long> items;
 
-    int opVal;
+    unsigned long long opVal;
     ops addOp;
 
     int testVal;
 
     int trueMonkey;
     int falsMonkey;
-
-    int totalInspect;
+     
+    long long totalInspect;
 
     monkey() : opVal(0), addOp(add), testVal(0), trueMonkey(0), falsMonkey(0), totalInspect(0) { }
 
@@ -54,7 +55,7 @@ int Day11_Main(Star Part_Of_Day)
             offset = line.find_first_of(" ", offset);
             while (offset != std::string::npos)
             {
-                newMonkey.items.push_back(atoi(line.substr(offset + 1, 2).c_str()));
+                newMonkey.items.push(atoi(line.substr(offset + 1, 2).c_str()));
                 offset = line.find_first_of(" ", offset + 1);
             }
             
@@ -92,15 +93,25 @@ int Day11_Main(Star Part_Of_Day)
             getline(DataFile, line);
         }
     }
-
     int numRounds = 20;
+    if (Part_Of_Day == Part_2) {
+        numRounds = 10000;
+    }
+
+    unsigned long long lcm = 1;
+    for (int i = 0; i < monkeyList.size(); i++) {
+        lcm *= monkeyList[i].testVal;
+    }
 
     for (int round = 0; round < numRounds; round++) {
         //parse data
         for (int i = 0; i < monkeyList.size(); i++) {
             monkey* curMonkey = &monkeyList[i];
             while (!curMonkey->items.empty()) {
-                int worry = curMonkey->items.front();
+                unsigned long long worry = curMonkey->items.front();
+
+                worry %= lcm;
+                curMonkey->items.pop();
                 //perform operation
                 if (curMonkey->addOp == add) {
                     //add
@@ -113,25 +124,28 @@ int Day11_Main(Star Part_Of_Day)
                 }
 
                 //divide by 3
-                worry /= 3;
+                if (Part_Of_Day == Part_1) {
+                    worry /= 3;
+                }
+
+
 
                 //Check test
                 if (worry % curMonkey->testVal == 0) {
-                    monkeyList[curMonkey->trueMonkey].items.push_back(worry);
+                    monkeyList[curMonkey->trueMonkey].items.push(worry);
                 } else {
-                    monkeyList[curMonkey->falsMonkey].items.push_back(worry);
+                    monkeyList[curMonkey->falsMonkey].items.push(worry);
                 }
 
-                curMonkey->items.erase(curMonkey->items.begin());
                 curMonkey->totalInspect++;
             }
         }
     }
 
     std::sort(monkeyList.begin(), monkeyList.end(), sortByBus);
-    int totalBus = monkeyList[0].totalInspect * monkeyList[1].totalInspect;
+    long long totalBus = monkeyList[0].totalInspect * monkeyList[1].totalInspect;
 
     DataFile.close();
 
-    return 0;
+    return totalBus;
 }
